@@ -1,13 +1,13 @@
 # PredSL: Prediction of Snow Cover and Lake Area Change using Cellular Automata
 
-This repository contains MATLAB code for simulating and forecasting changes in Snow Cover Area (SCA) and Glacial Lake Area (GLA) using a stochastic Cellular Automata-based model named **PredSL**. The model integrates environmental inputs (elevation, surface air temperature, and neighborhood states) with Latin Hypercube Sampling (LHS)-based parameter tuning to optimize transition functions for glacial hazard prediction.
+This repository contains MATLAB code for simulating and forecasting changes in Snow Cover Area (SCA) and Glacial Lake Area (GLA) using a stochastic Cellular Automata-based model named **PredSL**. The model integrates environmental inputs (elevation, surface air temperature, and neighbourhood states) with Latin Hypercube Sampling (LHS)-based parameter tuning to optimize transition functions for glacial hazard prediction.
 
 ## 🌐 Overview
 
 **PredSL** simulates glacial evolution in mountainous regions by:
 - Evaluating environmental influences using a governing function.
 - Iteratively minimizing prediction error via MSE.
-- Applying thresholding and neighborhood-based convolution to predict snow and lake transitions.
+- Applying thresholding and neighbourhood-based convolution to predict snow and lake transitions.
 - Comparing results to high-resolution satellite imagery for validation.
 
 ## 📂 Structure
@@ -30,7 +30,7 @@ This repository contains MATLAB code for simulating and forecasting changes in S
 ## 🔁 Workflow Summary
 
 1. **Initialize Parameters** via `xin = [rho, alpha, beta, gamma, pp, qq, rr]`.
-2. **Compute Governing Function** using elevation, temperature, and neighborhood state.
+2. **Compute Governing Function** using elevation, temperature, and neighbourhood state.
 3. **Tune Thresholds** over multiple iterations for best MSE using LHS.
 4. **Simulate Transitions** using `generateRaster`.
 5. **Apply Convolution** for spatial refinement.
@@ -59,11 +59,10 @@ This repository contains MATLAB code for simulating and forecasting changes in S
 
 ## 📈 Sample Visualization
 
-Visualization color scheme:
+Visualisation colour scheme:
 - Yellow: Snow
 - Blue: Lake
 - Black: Background
-- (Optional: Red overlay for change detection)
 
 ## 📁 Dataset Access
 The dataset required to run the model can be downloaded from Zenodo:
