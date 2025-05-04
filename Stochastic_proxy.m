@@ -9,46 +9,46 @@ rr = xin(7);
 
 global mask mask2 incidence elevation n m cells nbors data prop frac means ffunc ssim_accuracy
 
-ssim_accuracy = zeros(1,dimdata);
-s = ones(m,n).*mask;
-[x y z] = find(s==1);
+[r, c, ~] = size(data); % Dynamically get raster dimensions
 
-b = zeros(m,n)./nbors; 
-output = zeros(m,n,length(prop));
+ssim_accuracy = zeros(1, dimdata);
+s = ones(m, n) .* mask;
+[x, y, z] = find(s == 1);
+
+b = zeros(m, n) ./ nbors; 
+output = zeros(m, n, length(prop));
+
 %-----Automated assignment of values in governing equation----%
 steps = 0; 
 datastep = 1; 
 snowcells = cells; 
-measure = ones(2*length(prop),1); 
-
+measure = ones(2 * length(prop), 1); 
 carryon = true;
 
-
-%dimdata = 5;  % Assuming dimdata is the number of iterations
+% Initialize variables using dynamic sizes
 scaling = zeros(1, dimdata);
 fixed = cell(1, dimdata);
-dist_2 = zeros(4279, 6826, dimdata);
-data_mod = zeros(4279,6826,dimdata);
+dist_2 = zeros(r, c, dimdata);
+data_mod = zeros(r, c, dimdata);
 
 for loop = 1:dimdata
     % Calculate scaling
     scaling(loop) = 1.0 / ((1.0 + alpha * (means(loop)^pp)) * (1.0 + beta * (means(6)^qq)));
-    
-    % Access incidence (assuming incidence1, incidence2, etc., are separate variables)
+
+    % Access incidence (assumed predefined as incidence1, incidence2, etc.)
     incidence = eval(['incidence' num2str(loop)]);
     incidence(incidence < 0) = 0;
-    
-    % Assuming elevation is defined
+
     elevation(elevation < 0) = 0;
 
-    % Calculate fixed values
-    fixed{loop} = scaling(loop) * ((1 + alpha * (power(incidence, pp))).*(1 + beta * (power(elevation, qq))));
-    
-    % Generate random sequence for data(:,:,loop)
-    [xx, yy, ii] = find(data(:,:,loop) > 0);
+    % Compute fixed array
+    fixed{loop} = scaling(loop) * ((1 + alpha * (power(incidence, pp))) .* ...
+                                    (1 + beta * (power(elevation, qq))));
+
+    % Generate random sequence for current timestamp
+    [xx, yy, ii] = find(data(:, :, loop) > 0);
     seq = randperm(length(xx));
-    
-    % Loop over the sequence and calculate dist_2
+
     for j = 1:length(seq)
         x = xx(seq(j));
         y = yy(seq(j));
@@ -56,17 +56,20 @@ for loop = 1:dimdata
         dist_2(x, y, loop) = ffunc;
     end
 end
-for loop=1:dimdata
-for z=1:4279
-    for w=1:6826
-        if (data(z,w,loop)==2)
-            data_mod(z,w,loop)=1;
-        else
-            data_mod(z,w,loop)=data(z,w,loop);
+
+% Modify data to convert lake class from 2 to 1, preserving other values
+for loop = 1:dimdata
+    for z = 1:r
+        for w = 1:c
+            if (data(z, w, loop) == 2)
+                data_mod(z, w, loop) = 1;
+            else
+                data_mod(z, w, loop) = data(z, w, loop);
+            end
         end
     end
 end
-end
+
 
 %-------new automation for generating threshold values------------%
 % Generate potential threshold values
