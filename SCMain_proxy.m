@@ -204,4 +204,4 @@ drawon = true;
 xin = (lb+(ub-lb).*samplepars(8,:));
 % % If the user wants to run automatically the un-comment the line below, else
 % % run the script of Stochastic_proxy.m seperately
-% StochasticSolver(xin(1),xin(2),xin(3),xin(4),xin(5),xin(6),xin(7));
+
