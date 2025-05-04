@@ -12,13 +12,14 @@ This repository contains MATLAB code for simulating and forecasting changes in S
 
 ## 📂 Structure
 
-- `StochasticSolver.m` – Main script for executing the simulation workflow.
+- `SCMain_proxy.m` – Takes inputs, normalizes as per requirement.
+- `Stochastic_proxy.m` – Starts executing the simulation workflow.
 - `generateRaster.m` – Applies thresholding rules to generate discrete class rasters.
 - `convolution.m` – Applies spatial refinement through 3×3 box filtering.
 - `thresholding2.m` – Computes MSE between simulated and reference rasters during threshold tuning.
-- `save_to_excel.m` – Logs coefficients, thresholds, and performance metrics for record keeping.
 - `data/` – Input rasters and ground truth files (not included in this repo).
 - `output/` – Final simulated outputs and performance evaluation.
+- `matlab_adaptive_threshold_LHS_8.mat` - contains all the necessary computations in the workspace 
 
 ## 🧮 Classes and Labels
 
@@ -64,4 +65,5 @@ Visualization color scheme:
 - Black: Background
 - (Optional: Red overlay for change detection)
 
-
+## The Dataset can be accessed via the link: https://zenodo.org/records/15337740
+** Start the code from SCMain_proxy.m, where the data is loaded and normalized as required. After completing the execution, the Stochastic_proxy.m computes the necessary values, performs all the operations and generates the result as per the requirement.
