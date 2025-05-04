@@ -1,4 +1,4 @@
-# PredSL: Stochastic Cellular Automata for Snow and Glacial Lake Simulation
+# PredSL: Prediction of Snow Cover and Lake Area Change using Cellular Automata
 
 This repository contains MATLAB code for simulating and forecasting changes in Snow Cover Area (SCA) and Glacial Lake Area (GLA) using a stochastic Cellular Automata-based model named **PredSL**. The model integrates environmental inputs (elevation, surface air temperature, and neighborhood states) with Latin Hypercube Sampling (LHS)-based parameter tuning to optimize transition functions for glacial hazard prediction.
 
