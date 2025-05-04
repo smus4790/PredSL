@@ -19,7 +19,7 @@ This repository contains MATLAB code for simulating and forecasting changes in S
 - `thresholding2.m` – Computes MSE between simulated and reference rasters during threshold tuning.
 - `data/` – Input rasters and ground truth files (not included in this repo).
 - `output/` – Final simulated outputs and performance evaluation.
-- `matlab_adaptive_threshold_LHS_8.mat` - contains all the necessary computations in the workspace 
+- `matlab_adaptive_threshold_LHS_8.mat` - contains all the necessary computations in the workspace. 
 
 ## 🧮 Classes and Labels
 
