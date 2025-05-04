@@ -65,5 +65,11 @@ Visualization color scheme:
 - Black: Background
 - (Optional: Red overlay for change detection)
 
-## The Dataset can be accessed via the link: https://zenodo.org/records/15337740
-** Start the code from SCMain_proxy.m, where the data is loaded and normalized as required. After completing the execution, the Stochastic_proxy.m computes the necessary values, performs all the operations and generates the result as per the requirement.
+## 📁 Dataset Access
+The dataset required to run the model can be downloaded from Zenodo:
+
+🔗 **[Access Dataset on Zenodo](https://zenodo.org/records/15337740)**
+
+Please download and place the dataset in the appropriate directory before executing the main script.
+
+Start the code from SCMain_proxy.m, where the data is loaded and normalized as required. After completing the execution, the Stochastic_proxy.m computes the necessary values, performs all the operations and generates the result as per the requirement.
